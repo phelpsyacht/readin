@@ -1,4 +1,4 @@
-# readin:springboot-mybatis-demo,when you have downloaded it,you can do something following:
+# readin-springboot-mybatis-demo,when you have downloaded it,you can do something following:
 
 import the including sql file, to your mysql database.
 2.use your mysql database's username, database and password to replace them in application.properties file,etc.
