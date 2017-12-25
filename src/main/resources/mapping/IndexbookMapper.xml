@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.readbook.ok.dao.IndexbookMapper">
+  <resultMap id="BaseResultMap" type="com.readbook.ok.mapping.Indexbook">
+    <id column="book_id" jdbcType="INTEGER" property="bookId" />
+    <result column="urlinput" jdbcType="VARCHAR" property="urlinput" />
+    <result column="inputtime" jdbcType="CHAR" property="inputtime" />
+    <result column="tpinput" jdbcType="CHAR" property="tpinput" />
+    <result column="ipinput" jdbcType="CHAR" property="ipinput" />
+    <result column="getinput" jdbcType="VARCHAR" property="getinput" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    book_id, urlinput, inputtime, tpinput, ipinput, getinput, post
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ecs_readinfo
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ecs_readinfo
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.readbook.ok.mapping.Indexbook">
+    insert into ecs_readinfo (urlinput, inputtime, 
+      tpinput, ipinput, getinput, 
+      post)
+    values (#{urlinput,jdbcType=VARCHAR}, #{inputtime,jdbcType=CHAR}, 
+      #{tpinput,jdbcType=CHAR}, #{ipinput,jdbcType=CHAR}, #{getinput,jdbcType=VARCHAR}, 
+      #{post,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.readbook.ok.mapping.Indexbook">
+    insert into ecs_readinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="urlinput != null">
+        urlinput,
+      </if>
+      <if test="inputtime != null">
+        inputtime,
+      </if>
+      <if test="tpinput != null">
+        tpinput,
+      </if>
+      <if test="ipinput != null">
+        ipinput,
+      </if>
+      <if test="getinput != null">
+        getinput,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="urlinput != null">
+        #{urlinput,jdbcType=VARCHAR},
+      </if>
+      <if test="inputtime != null">
+        #{inputtime,jdbcType=CHAR},
+      </if>
+      <if test="tpinput != null">
+        #{tpinput,jdbcType=CHAR},
+      </if>
+      <if test="ipinput != null">
+        #{ipinput,jdbcType=CHAR},
+      </if>
+      <if test="getinput != null">
+        #{getinput,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.readbook.ok.mapping.Indexbook">
+    update ecs_readinfo
+    <set>
+      <if test="urlinput != null">
+        urlinput = #{urlinput,jdbcType=VARCHAR},
+      </if>
+      <if test="inputtime != null">
+        inputtime = #{inputtime,jdbcType=CHAR},
+      </if>
+      <if test="tpinput != null">
+        tpinput = #{tpinput,jdbcType=CHAR},
+      </if>
+      <if test="ipinput != null">
+        ipinput = #{ipinput,jdbcType=CHAR},
+      </if>
+      <if test="getinput != null">
+        getinput = #{getinput,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.readbook.ok.mapping.Indexbook">
+    update ecs_readinfo
+    set urlinput = #{urlinput,jdbcType=VARCHAR},
+      inputtime = #{inputtime,jdbcType=CHAR},
+      tpinput = #{tpinput,jdbcType=CHAR},
+      ipinput = #{ipinput,jdbcType=CHAR},
+      getinput = #{getinput,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR}
+    where book_id = #{bookId,jdbcType=INTEGER}
+  </update>
+ 
+</mapper>
